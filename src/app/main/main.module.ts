@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './components/main/main.component';
 import { MatSidenavModule } from "@angular/material";
+import { MatIconModule } from '@angular/material/icon';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -15,7 +16,8 @@ import {SidebarService} from "./services/sidebar.service";
     CommonModule,
     MatSidenavModule,
     BrowserAnimationsModule,
-    MainRoutingModule
+    MainRoutingModule,
+    MatIconModule
   ],
   providers: [SidebarService],
   declarations: [MainComponent, SidebarComponent, HeaderComponent],

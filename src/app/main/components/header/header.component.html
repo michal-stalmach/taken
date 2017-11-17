@@ -1,10 +1,12 @@
 <div class="container">
   <button class="sidebarToggler" (click)="toggleSidebar()">
-    open sidebar
+      <img class="sidebar-burger" src="http://www.pvhc.net/img12/eigscmtpbrugjcbpxlmv.png">
   </button>
   <div class="user-info">
-    <span class="user-name">Hi, {{userName}}! &nbsp;</span>
-    <img class="user-photo" src="{{userPhotoLink}}" alt="">
+    <span class="user-name">Hola, {{userName}}! &nbsp;</span>
+    <div class="user-photo-wrapper">
+      <img class="user-photo" src="{{userPhotoLink}}" alt="">
+    </div>
     <span (click)="logout()">log out &nbsp;</span>
   </div>
 </div>

@@ -9,11 +9,23 @@
 :host .container {
   display: flex;
   justify-content: space-between;
+  padding: 0 20px;
+  align-items: center;
 }
 
 :host .sidebarToggler {
   opacity: 1;
   transition: opacity 0.3s;
+  background: white;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  border: 0;
+}
+
+:host .sidebar-burger {
+  width: 100%;
+  height: 100%;
 }
 
 :host-context(.open) .sidebarToggler {
@@ -27,10 +39,15 @@
   height: 10vh;
 }
 
-:host .user-photo{
+:host .user-photo-wrapper {
   height: 8vh;
   width: 8vh;
+  margin: 0 2vw;  
+}
+
+:host .user-photo{
+  height: 100%;
+  width: 100%;
   border-radius: 50%;
-  margin-right: 1vw;
 }
 
