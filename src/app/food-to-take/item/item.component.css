@@ -6,3 +6,18 @@
 :host img {
     width: 100px;
 }
+
+:host .food-img {
+    min-width: 80px;
+    max-width: 80px;
+}
+
+:host .food-img img {
+    width: 100%;
+    margin-left: auto;
+}
+
+:host .card-container {
+    display: flex;
+    justify-content: space-between;
+}

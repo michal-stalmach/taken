@@ -5,16 +5,20 @@
     <mat-card-subtitle>{{ food.createdAt | date:'short' }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    {{food.type}}
+    <div class="card-container">
+        <p>
+            {{ food.details }} 9399493939393
+          </p>
     <ng-container [ngSwitch]="food.type">
+      <div class="food-img">
         <img mat-card-image *ngSwitchCase="'FITLAB'" src="http://fitlabcatering.pl/img/logo.png" alt="FitLab">
         <img mat-card-image *ngSwitchCase="'LUNCHING'" src="https://lunching.pl/_/img/homepage/wyroznia_lunching.png" alt="Lunching">
+      </div>
     </ng-container>
 
 
-    <p>
-      {{ food.details }}
-    </p>
+   
+  </div>
   </mat-card-content>
   <mat-card-actions align="end">
     <button mat-raised-button color="primary">TAKE</button>
