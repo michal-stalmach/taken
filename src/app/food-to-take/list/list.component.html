@@ -1,4 +1,8 @@
-<app-food-to-take-item *ngFor="let item of items | async" [food]="item"></app-food-to-take-item>
+<mat-slide-toggle class="avaliable-toggler" (change)="changeModel($event)" [checked]=onlyAvaliableFoodShown>Show only avaliable food</mat-slide-toggle>
+
+<ng-container *ngFor="let item of items | async" >
+  <app-food-to-take-item *ngIf="!onlyAvaliableFoodShown || !item.isTaken" [food]="item"></app-food-to-take-item>
+</ng-container>
 
 <div class="button-row" align="end">
   <button (click)="addItem()" mat-fab>

@@ -34,21 +34,30 @@ export enum FoodType {
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ListComponent {
+export class ListComponent implements OnInit {
 
   public items: Observable<FoodToTake[]>;
+  public onlyAvaliableFoodShown: boolean = false;
   private itemsCollection: AngularFirestoreCollection<FoodToTake>;
 
   constructor(
-    private afs: AngularFirestore,
-    private auth: AuthService,
-    private dialog: MatDialog
+    public afs: AngularFirestore,
+    public auth: AuthService,
+    public  dialog: MatDialog
   ) {
+    // .do(a => console.log(a));
+    // .map(items => items.sort());
     this.itemsCollection = afs.collection<FoodToTake>(
       'toTake',
       ref => ref.orderBy('createdAt', 'desc').limit(50)
     );
     this.items = this.itemsCollection.valueChanges();
+  }
+
+  public ngOnInit(): void {
+    this.itemsCollection = this.afs.collection<FoodToTake>('toTake');
+    this.items = this.itemsCollection
+      .valueChanges()
   }
 
   addItem() {
@@ -70,6 +79,10 @@ export class ListComponent {
         uuid: uuid()
       }))
       .subscribe(item => this.itemsCollection.doc(item.uuid).set(item));
+  }
+
+  public changeModel(event): void {
+    this.onlyAvaliableFoodShown = event.checked;
   }
 
 }

@@ -9,3 +9,8 @@
     position: sticky;
     bottom: 20px;
 }
+
+:host .avaliable-toggler {
+  display: block;
+  margin-bottom: 20px;
+}
