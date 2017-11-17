@@ -24,6 +24,27 @@
   cursor: pointer;
 }
 
+:host .sidebar-burger {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  display: none;
+}
+
+:host .sidebar-burger:focus,
+:host .sidebar-burger:active {
+  outline: none;
+}
+
+:host.open .sidebar-burger {
+  left: 250px;
+  display: block;
+}
+
+:host .sidebar-title:first-of-type:hover {
+  background-color: #3F51B5;
+}
+
 :host .sidebar-title:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
