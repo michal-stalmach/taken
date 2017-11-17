@@ -1,6 +1,6 @@
 <mat-card class="example-card">
   <mat-card-header align="start">
-    <div mat-card-avatar class="example-header-image" [ngStyle]="avatarStyle"></div>
+    <div mat-card-avatar class="example-header-image" [ngStyle]="ownerAvatarStyle"></div>
     <mat-card-title>{{ food.owner.name }}</mat-card-title>
     <mat-card-subtitle>{{ food.createdAt | date:'short' }}</mat-card-subtitle>
   </mat-card-header>
@@ -22,10 +22,10 @@
     <mat-card-header class="card-taken-info" *ngIf="food.isTaken">
       <span class="card-taken-text">taken by</span>
       <div class="card-header-text">
-        <mat-card-title>{{ food.owner.name }}</mat-card-title>
-        <mat-card-subtitle>{{ food.createdAt | date:'short' }}</mat-card-subtitle>
+        <mat-card-title>{{ food.takenBy.name }}</mat-card-title>
+        <mat-card-subtitle>{{ food.takenAt | date:'short' }}</mat-card-subtitle>
       </div>
-      <div mat-card-avatar class="example-header-image card-taken-image" [ngStyle]="avatarStyle"></div>
+      <div mat-card-avatar class="example-header-image card-taken-image" [ngStyle]="takenByAvatarStyle"></div>
     </mat-card-header>
 
     <mat-card-actions align="end" *ngIf="!food.isTaken">

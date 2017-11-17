@@ -13,7 +13,8 @@ export class ItemComponent implements OnChanges {
   @Input()
   public food: FoodToTake;
 
-  public avatarStyle: any;
+  public ownerAvatarStyle: any;
+  public takenByAvatarStyle: any;
 
   private itemsCollection: AngularFirestoreCollection<FoodToTake>;
 
@@ -25,16 +26,23 @@ export class ItemComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    this.avatarStyle = {
+    this.ownerAvatarStyle = {
       'background-image': `url('${this.food.owner.photoURL}')`,
       'background-size': 'cover'
     };
+    if (this.food.isTaken) {
+      this.takenByAvatarStyle = {
+        'background-image': `url('${this.food.takenBy.photoURL}')`,
+        'background-size': 'cover'
+      };
+    }
   }
 
   take() {
     this.auth.user$
       .map(user => ({
         isTaken: true,
+        takenAt: new Date(),
         takenBy: {
           uid: user.uid,
           name: user.displayName,

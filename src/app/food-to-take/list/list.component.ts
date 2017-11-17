@@ -13,6 +13,7 @@ export interface FoodToTake {
   createdAt: Date;
   type: FoodType;
   isTaken: boolean;
+  takenAt?: Date;
   takenBy?: User;
   details: string;
 }
@@ -45,9 +46,9 @@ export class ListComponent {
   ) {
     this.itemsCollection = afs.collection<FoodToTake>('toTake');
     this.items = this.itemsCollection
-      .valueChanges();
-    // .do(a => console.log(a));
-    // .map(items => items.sort());
+      .valueChanges()
+      // .do(a => console.log(a));
+      .map(items => items.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime()));
   }
 
   addItem() {
