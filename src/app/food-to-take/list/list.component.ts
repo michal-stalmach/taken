@@ -8,15 +8,18 @@ import { MatDialog } from '@angular/material/dialog';
 import 'rxjs/add/operator/combineLatest';
 
 export interface FoodToTake {
-  owner: {
-    uid: string,
-    name: string,
-    photoURL: string
-  };
+  uuid: string;
+  owner: User;
   createdAt: Date;
   type: FoodType;
   isTaken: boolean;
-  takenBy?: string;
+  takenBy?: User;
+}
+
+export interface User {
+  uid: string;
+  name: string;
+  photoURL: string;
 }
 
 export enum FoodType {
@@ -40,8 +43,8 @@ export class ListComponent {
   ) {
     this.itemsCollection = afs.collection<FoodToTake>('toTake');
     this.items = this.itemsCollection
-      .valueChanges()
-      .do(a => console.log(a));
+      .valueChanges();
+    // .do(a => console.log(a));
     // .map(items => items.sort());
   }
 
@@ -60,9 +63,21 @@ export class ListComponent {
           photoURL: user.photoURL
         },
         createdAt: new Date(),
-        isTaken: false
+        isTaken: false,
+        uuid: uuid()
       }))
-      .subscribe(item => this.itemsCollection.add(item));
+      .subscribe(item => this.itemsCollection.doc(item.uuid).set(item));
   }
 
+}
+
+
+function uuid(): string {
+  return [s4(), s4(), '-', s4(), '-', s4(), '-', s4(), '-', s4(), s4(), s4()].join('');
+}
+
+function s4(): string {
+  return Math.floor((1 + Math.random()) * 0x10000)
+    .toString(16)
+    .substring(1);
 }

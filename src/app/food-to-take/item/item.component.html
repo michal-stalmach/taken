@@ -20,7 +20,7 @@
    
   </div>
   </mat-card-content>
-  <mat-card-actions align="end">
-    <button mat-raised-button color="primary">TAKE</button>
+  <mat-card-actions align="end" *ngIf="!food.isTaken">
+    <button mat-raised-button color="primary" (click)="take()">TAKE</button>
   </mat-card-actions>
 </mat-card>

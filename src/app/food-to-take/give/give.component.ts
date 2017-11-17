@@ -16,7 +16,6 @@ export class GiveComponent {
   constructor(public dialogRef: MatDialogRef<GiveComponent>) { }
 
   closeDialog() {
-    debugger;
     this.dialogRef.close({
       type: this.type.value
     });
