@@ -13,7 +13,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthorizationModule } from './authorization/authorization.module';
 import { RouterModule } from '@angular/router';
 import { FoodToTakeModule } from './food-to-take/food-to-take.module';
-import {PreferencesModule} from "./preferences/preferences.module";
+import { PreferencesModule } from "./preferences/preferences.module";
+
+import * as firebase from 'firebase/app';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,7 @@ import {PreferencesModule} from "./preferences/preferences.module";
     MainModule,
     AppRoutingModule,
     RouterModule.forRoot([], {
-      enableTracing: true
+      enableTracing: false
     }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
@@ -39,4 +41,9 @@ import {PreferencesModule} from "./preferences/preferences.module";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    // Initialize Firebase
+    firebase.initializeApp(environment.firebase);
+  }
+}
