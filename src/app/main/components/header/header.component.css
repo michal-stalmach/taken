@@ -28,9 +28,6 @@
   height: 50px;
   width: 50px;
   fill: white;
-
-
-  
 }
 
 :host-context(.open) .sidebarToggler {
