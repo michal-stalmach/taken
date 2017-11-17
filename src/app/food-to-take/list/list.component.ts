@@ -34,16 +34,16 @@ export enum FoodType {
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ListComponent implements OnInit {
+export class ListComponent {
 
   public items: Observable<FoodToTake[]>;
-  public onlyAvaliableFoodShown: boolean = false;
+  public onlyAvaliableFoodShown = false;
   private itemsCollection: AngularFirestoreCollection<FoodToTake>;
 
   constructor(
     public afs: AngularFirestore,
     public auth: AuthService,
-    public  dialog: MatDialog
+    public dialog: MatDialog
   ) {
     // .do(a => console.log(a));
     // .map(items => items.sort());
@@ -54,18 +54,13 @@ export class ListComponent implements OnInit {
     this.items = this.itemsCollection.valueChanges();
   }
 
-  public ngOnInit(): void {
-    this.itemsCollection = this.afs.collection<FoodToTake>('toTake');
-    this.items = this.itemsCollection
-      .valueChanges()
-  }
-
   addItem() {
     this.dialog.open(GiveComponent, {
       height: '400px',
       width: '600px',
     })
       .afterClosed()
+      .filter(food => food.type != null)
       .combineLatest(this.auth.user$)
       .map(([food, user]: [any, firebase.User]) => ({
         ...food,
