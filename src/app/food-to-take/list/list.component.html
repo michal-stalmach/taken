@@ -1,9 +1,7 @@
-<h2>Lists</h2>
-<ul>
-  <li *ngFor="let item of items | async">
-    {{ item | json }}
-  </li>
-</ul>
+<app-food-to-take-item *ngFor="let item of items | async">
+  {{ item | json }}
+</app-food-to-take-item>
 
-
-<button (click)="addItem()">add item</button>
+<div class="button-row" align="end">
+  <button (click)="addItem()" mat-fab>Give</button>
+</div>

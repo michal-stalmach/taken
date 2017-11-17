@@ -1,0 +1,9 @@
+:host {
+    display: block;
+    padding: 20px;
+}
+
+:host .button-row {
+    position: sticky;
+    bottom: 20px;
+}
