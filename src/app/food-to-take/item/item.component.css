@@ -21,3 +21,31 @@
     display: flex;
     justify-content: space-between;
 }
+
+:host .card-taken-info {
+    margin-left: auto;
+    justify-content: flex-end;
+}
+
+:host .card-taken-text {
+    order: 1;
+    color: gray;
+}
+
+
+:host .card-taken-image {
+    order: 3;
+}
+
+:host .card-header-text {
+    display: flex;
+    align-items: flex-start;
+    order: 2;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 20px;
+}
+
+:host .mat-card-header-text > * {
+    margin: 0;
+}

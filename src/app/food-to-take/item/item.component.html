@@ -1,26 +1,38 @@
 <mat-card class="example-card">
-  <mat-card-header align="end">
+  <mat-card-header align="start">
     <div mat-card-avatar class="example-header-image" [ngStyle]="avatarStyle"></div>
     <mat-card-title>{{ food.owner.name }}</mat-card-title>
     <mat-card-subtitle>{{ food.createdAt | date:'short' }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <div class="card-container">
-        <p>
-            {{ food.details }} 9399493939393
-          </p>
-    <ng-container [ngSwitch]="food.type">
-      <div class="food-img">
-        <img mat-card-image *ngSwitchCase="'FITLAB'" src="http://fitlabcatering.pl/img/logo.png" alt="FitLab">
-        <img mat-card-image *ngSwitchCase="'LUNCHING'" src="https://lunching.pl/_/img/homepage/wyroznia_lunching.png" alt="Lunching">
+      <p>
+        {{ food.details }} some details
+      </p>
+      <ng-container [ngSwitch]="food.type">
+        <div class="food-img">
+          <img mat-card-image *ngSwitchCase="'FITLAB'" src="http://fitlabcatering.pl/img/logo.png" alt="FitLab">
+          <img mat-card-image *ngSwitchCase="'LUNCHING'" src="https://lunching.pl/_/img/homepage/wyroznia_lunching.png" alt="Lunching">
+        </div>
+      </ng-container>
+
+
+
+    </div>
+    <mat-card-header class="card-taken-info" *ngIf="food.isTaken">
+      <span class="card-taken-text">taken by</span>
+      <div class="card-header-text">
+        <mat-card-title>{{ food.owner.name }}</mat-card-title>
+        <mat-card-subtitle>{{ food.createdAt | date:'short' }}</mat-card-subtitle>
       </div>
-    </ng-container>
+      <div mat-card-avatar class="example-header-image card-taken-image" [ngStyle]="avatarStyle"></div>
+    </mat-card-header>
+
+    <mat-card-actions align="end" *ngIf="!food.isTaken">
+      <button mat-raised-button color="primary" (click)="take()">DEJ</button>
+    </mat-card-actions>
 
 
-   
-  </div>
+
   </mat-card-content>
-  <mat-card-actions align="end" *ngIf="!food.isTaken">
-    <button mat-raised-button color="primary" (click)="take()">TAKE</button>
-  </mat-card-actions>
 </mat-card>
