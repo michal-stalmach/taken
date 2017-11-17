@@ -1,5 +1,7 @@
 <app-food-to-take-item *ngFor="let item of items | async" [food]="item"></app-food-to-take-item>
 
 <div class="button-row" align="end">
-  <button (click)="addItem()" mat-fab>Give</button>
+  <button (click)="addItem()" mat-fab>
+      <mat-icon>add</mat-icon>      
+  </button>
 </div>

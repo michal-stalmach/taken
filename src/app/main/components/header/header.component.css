@@ -43,8 +43,8 @@
 }
 
 :host .user-photo-wrapper {
-  height: 8vh;
-  width: 8vh;
+  height: 56px;
+  width: 56px;
   margin: 0 2vw;
 }
 

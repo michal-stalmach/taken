@@ -1,6 +1,13 @@
 <div class="sidebar-title" (click)="sidebarService.close()">
-  X
+    <mat-icon>arrow_back</mat-icon>
 </div>
-<div class="sidebar-item" routerLink="">Food list</div>
-<div class="sidebar-item" routerLink="/preferences">Preferences</div>
-<div class="sidebar-item" routerLink="">Your score</div>
+<div class="sidebar-item" routerLink="">
+    <mat-icon>list</mat-icon>    
+  <span>Food list</span>
+</div>
+<div class="sidebar-item" routerLink="/preferences">
+  <mat-icon>settings</mat-icon>   
+  <span>Preferences</span></div>
+<div class="sidebar-item" routerLink="">
+    <mat-icon>star_rate</mat-icon>   
+    <span> Your score</span></div>

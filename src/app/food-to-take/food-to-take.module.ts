@@ -9,8 +9,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { ItemComponent } from './item/item.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { GiveComponent } from './give/give.component';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
+
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
