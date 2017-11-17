@@ -1,0 +1,8 @@
+:host {
+  padding-left: 0;
+  transition: padding 0.3s;
+}
+
+:host.open {
+  padding-left: 20vw;
+}

@@ -1,0 +1,44 @@
+:host {
+  display: block;
+  position: absolute;
+  top:0;
+  left:-20vw;
+  width: 20vw;
+  height: 100vh;
+  background-color: #3F51B5;
+  transition: left 0.3s;
+}
+
+:host.open {
+  left: 0;
+}
+
+:host .sidebar-title {
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  border-bottom: 1px white solid;
+  border-right: 1px white solid;
+  cursor: pointer;
+}
+
+:host .sidebar-title:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+:host .sidebar-item {
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+:host .sidebar-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+

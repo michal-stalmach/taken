@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SidebarService } from "../../services/sidebar.service";
 import { AuthService } from '../../../authorization/auth.service';
 import { Router } from '@angular/router';
 
@@ -9,12 +10,23 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  public sidebarOpen: boolean = false;
+
+
   constructor(
     private auth: AuthService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private sidebarService: SidebarService
+  ) {
+    this.sidebarService.isOpen$.subscribe(isOpen => this.sidebarOpen = isOpen);
+  }
+
 
   ngOnInit() {
+  }
+
+  public toggleSidebar(): void {
+    this.sidebarService.toggle();
   }
 
   logout() {
