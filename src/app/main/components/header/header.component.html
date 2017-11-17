@@ -3,7 +3,9 @@
     open sidebar
   </button>
   <div class="user-info">
-    <button (click)="logout()">log out</button>
+    <span class="user-name">Hi, {{userName}}! &nbsp;</span>
+    <img class="user-photo" src="{{userPhotoLink}}" alt="">
+    <span (click)="logout()">log out &nbsp;</span>
   </div>
 </div>
 

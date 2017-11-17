@@ -12,13 +12,21 @@ export class HeaderComponent implements OnInit {
 
   public sidebarOpen: boolean = false;
 
+  public userName: string = ""
+  public userPhotoLink: string = "";
+
 
   constructor(
     private auth: AuthService,
     private router: Router,
-    private sidebarService: SidebarService
+    private sidebarService: SidebarService,
+    public userService: AuthService
   ) {
     this.sidebarService.isOpen$.subscribe(isOpen => this.sidebarOpen = isOpen);
+    this.userService.afAuth.authState.subscribe(userData => {
+      this.userName = userData.displayName.split(" ")[0];
+      this.userPhotoLink = userData.photoURL;
+    });
   }
 
 
