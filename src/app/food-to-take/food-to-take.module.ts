@@ -10,6 +10,9 @@ import { ItemComponent } from './item/item.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { GiveComponent } from './give/give.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -18,7 +21,11 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatButtonModule,
     MatCardModule,
     MatDialogModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatIconModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
     GiveComponent

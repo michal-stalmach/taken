@@ -14,6 +14,7 @@ export interface FoodToTake {
   type: FoodType;
   isTaken: boolean;
   takenBy?: User;
+  details: string;
 }
 
 export interface User {
@@ -23,7 +24,8 @@ export interface User {
 }
 
 export enum FoodType {
-  FITLAB = 'FITLAB'
+  FITLAB = 'FITLAB',
+  LUNCHING = 'LUNCHING'
 }
 
 @Component({

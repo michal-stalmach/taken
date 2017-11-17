@@ -11,7 +11,7 @@ export class SidebarComponent implements OnInit {
   @HostBinding("class.open")
   public isSidebarOpen: boolean = false;
 
-  constructor(private sidebarService: SidebarService) {
+  constructor(public sidebarService: SidebarService) {
     this.sidebarService.isOpen$.subscribe(isOpen => this.isSidebarOpen = isOpen);
   }
 

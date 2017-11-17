@@ -29,7 +29,7 @@ import {PreferencesModule} from "./preferences/preferences.module";
     RouterModule.forRoot([], {
       enableTracing: true
     }),
-    AngularFireModule.initializeApp(environment.firebase, 'taken'),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
     environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : []

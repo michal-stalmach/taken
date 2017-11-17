@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
     public userService: AuthService
   ) {
     this.sidebarService.isOpen$.subscribe(isOpen => this.sidebarOpen = isOpen);
-    this.userService.afAuth.authState.subscribe(userData => {
+    this.userService.user$.subscribe(userData => {
       this.userName = userData.displayName.split(" ")[0];
       this.userPhotoLink = userData.photoURL;
     });

@@ -1,6 +1,6 @@
 <h2 mat-dialog-title align="center">What would you like to give?</h2>
 <mat-dialog-content align="center">
-  <mat-button-toggle-group #type="matButtonToggleGroup">
+  <mat-button-toggle-group value="FITLAB" (change)="onTypeChange($event)">
     <mat-button-toggle value="FITLAB">
       FitLab
     </mat-button-toggle>
@@ -8,7 +8,15 @@
       Lunching
     </mat-button-toggle>
   </mat-button-toggle-group>
-  <div class="example-selected-value">Selected value: {{type.value}}</div>
+  <form [formGroup]="heroForm" (ngSubmit)="onSubmit()" novalidate *ngIf="type === 'LUNCHING'">
+    <mat-form-field class="example-full-width">
+      <span matPrefix>CW- &nbsp;</span>
+      <input type="text" matInput placeholder="Your Lunching number" formControlName="lunchingNumber" required>
+      <mat-error *ngIf="heroForm.status === 'INVALID'">
+        Lunching number is required
+      </mat-error>
+    </mat-form-field>
+  </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-raised-button mat-dialog-close>Cancel</button>
