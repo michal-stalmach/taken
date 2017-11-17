@@ -15,7 +15,7 @@ export class IsNotLoggedInGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return this.auth.isLoggedIn
+    return this.auth.isLoggedIn$
       .do(loggedIn => {
         if (loggedIn) {
           this.router.navigate(['']);

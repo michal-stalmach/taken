@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule, FirebaseApp } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFirestoreModule, AngularFirestore, EnablePersistenceToken } from 'angularfire2/firestore';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import { MainModule } from './main/main.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthorizationModule } from './authorization/authorization.module';
 import { RouterModule } from '@angular/router';
+import { FoodToTakeModule } from './food-to-take/food-to-take.module';
 
 @NgModule({
   declarations: [
@@ -20,16 +21,20 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     AuthorizationModule,
+    FoodToTakeModule,
     MainModule,
     AppRoutingModule,
     RouterModule.forRoot([], {
       enableTracing: true
     }),
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase, 'taken'),
+    AngularFirestoreModule,
     AngularFireAuthModule,
     environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : []
   ],
-  providers: [],
+  providers: [
+    { provide: EnablePersistenceToken, useValue: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

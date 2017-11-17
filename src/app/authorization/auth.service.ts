@@ -12,7 +12,11 @@ export class AuthService {
     private router: Router
   ) { }
 
-  get isLoggedIn(): Observable<boolean> {
+  get user$(): Observable<firebase.User> {
+    return this.afAuth.authState;
+  }
+
+  get isLoggedIn$(): Observable<boolean> {
     return this.afAuth.authState.map(user => user != null);
   }
 
