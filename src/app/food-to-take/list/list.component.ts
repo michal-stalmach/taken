@@ -44,11 +44,11 @@ export class ListComponent {
     private auth: AuthService,
     private dialog: MatDialog
   ) {
-    this.itemsCollection = afs.collection<FoodToTake>('toTake');
-    this.items = this.itemsCollection
-      .valueChanges()
-      // .do(a => console.log(a));
-      .map(items => items.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime()));
+    this.itemsCollection = afs.collection<FoodToTake>(
+      'toTake',
+      ref => ref.orderBy('createdAt', 'desc').limit(50)
+    );
+    this.items = this.itemsCollection.valueChanges();
   }
 
   addItem() {
