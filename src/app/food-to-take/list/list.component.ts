@@ -3,6 +3,8 @@ import { AngularFirestoreDocument, AngularFirestoreCollection, AngularFirestore 
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../../authorization/auth.service';
 import * as firebase from 'firebase/app';
+import { GiveComponent } from "../give/give.component";
+import { MatDialog } from "@angular/material/dialog";
 
 export interface Item {
   owner: string;
@@ -17,7 +19,7 @@ enum FoodType {
 }
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-food-to-take-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
@@ -28,21 +30,27 @@ export class ListComponent {
 
   constructor(
     private afs: AngularFirestore,
-    private auth: AuthService
+    private auth: AuthService,
+    private dialog: MatDialog
   ) {
     this.itemsCollection = afs.collection<Item>('toTake');
     this.items = this.itemsCollection.valueChanges();
   }
 
   addItem() {
-    this.auth.user$
-      .map<firebase.User, Item>(user => ({
-        owner: user.uid,
-        createdAt: new Date(),
-        type: FoodType.FITLAB,
-        isTaken: false
-      }))
-      .subscribe(item => this.itemsCollection.add(item));
+    let dialogRef = this.dialog.open(GiveComponent, {
+      height: '400px',
+      width: '600px',
+    });
+
+    // this.auth.user$
+    //   .map<firebase.User, Item>(user => ({
+    //     owner: user.uid,
+    //     createdAt: new Date(),
+    //     type: FoodType.FITLAB,
+    //     isTaken: false
+    //   }))
+    //   .subscribe(item => this.itemsCollection.add(item));
   }
 
 }
