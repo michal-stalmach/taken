@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FoodToTake, User } from '../list/list.component';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { AuthService } from '../../authorization/auth.service';
+import {JanuszService} from "../../services/janusz.service";
 
 @Component({
   selector: 'app-food-to-take-item',
@@ -20,7 +21,8 @@ export class ItemComponent implements OnChanges {
 
   constructor(
     private auth: AuthService,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    public januszService: JanuszService
   ) {
     this.itemsCollection = afs.collection<FoodToTake>('toTake');
   }
@@ -49,7 +51,9 @@ export class ItemComponent implements OnChanges {
           photoURL: user.photoURL
         } as User
       }))
-      .subscribe(updates => this.itemsCollection.doc(this.food.uuid).update(updates));
+      .subscribe(updates => {
+        this.itemsCollection.doc(this.food.uuid).update(updates);
+        this.januszService.go();
+      });
   }
-
 }

@@ -9,6 +9,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {SidebarService} from "./services/sidebar.service";
+import {JanuszService} from "../services/janusz.service";
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import {SidebarService} from "./services/sidebar.service";
     MainRoutingModule,
     MatIconModule
   ],
-  providers: [SidebarService],
+  providers: [SidebarService, JanuszService],
   declarations: [MainComponent, SidebarComponent, HeaderComponent],
   exports: [MainComponent, SidebarComponent, HeaderComponent]
 })

@@ -8,3 +8,37 @@
   left: 300px;
   overflow: hidden;
 }
+
+:host .janusz {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%) scale(1);
+  text-align: center;
+  display: none;
+}
+
+:host .janusz img {
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+:host .janusz .text {
+  font-size: 10vw;
+}
+
+:host .janusz.active {
+  display: block;
+  animation: janusz 1s;
+}
+
+@keyframes janusz {
+  from {
+    transform: translate(-50%, 50%) scale(0) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, 50%) scale(1) rotate(360deg)
+  }
+}

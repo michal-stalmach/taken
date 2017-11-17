@@ -1,5 +1,6 @@
 import {Component, OnInit, HostBinding} from '@angular/core';
 import {SidebarService} from "../../services/sidebar.service";
+import {JanuszService} from "../../../services/janusz.service";
 
 @Component({
   selector: 'app-main',
@@ -11,7 +12,7 @@ export class MainComponent implements OnInit {
   @HostBinding("class.open")
   public isSidebarOpen: boolean = false;
 
-  constructor(private sidebarService: SidebarService) {
+  constructor(private sidebarService: SidebarService, public januszService: JanuszService) {
     this.sidebarService.isOpen$.subscribe(isOpen => this.isSidebarOpen = isOpen);
   }
 
