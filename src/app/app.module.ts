@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthorizationModule } from './authorization/authorization.module';
 import { RouterModule } from '@angular/router';
 import { FoodToTakeModule } from './food-to-take/food-to-take.module';
+import {PreferencesModule} from "./preferences/preferences.module";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FoodToTakeModule } from './food-to-take/food-to-take.module';
     BrowserModule,
     AuthorizationModule,
     FoodToTakeModule,
+    PreferencesModule,
     MainModule,
     AppRoutingModule,
     RouterModule.forRoot([], {
