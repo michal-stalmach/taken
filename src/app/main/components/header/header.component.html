@@ -1,7 +1,9 @@
-<button *ngIf="!sidebarOpen" (click)="toggleSidebar()">
-  open sidebar
-</button>
-<p>
-  header works!
-  <button (click)="logout()">log out</button>
-</p>
+<div class="container">
+  <button class="sidebarToggler" (click)="toggleSidebar()">
+    open sidebar
+  </button>
+  <div class="user-info">
+    <button (click)="logout()">log out</button>
+  </div>
+</div>
+

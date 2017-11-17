@@ -1,6 +1,23 @@
 :host {
+  display: block;
   width: 100%;
   background-color: #3F51B5;
   height: 10vh;
-  position: fixed;
 }
+
+
+:host .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+:host .sidebarToggler {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+:host-context(.open) .sidebarToggler {
+  opacity: 0;
+  pointer-events: none;
+}
+
