@@ -9,6 +9,9 @@ import { AppComponent } from './app.component';
 
 import { environment } from '../environments/environment';
 import {MainModule} from "./main/main.module";
+import { AppRoutingModule } from './app-routing.module';
+import { AuthorizationModule } from './authorization/authorization.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,9 @@ import {MainModule} from "./main/main.module";
   ],
   imports: [
     BrowserModule,
+    AuthorizationModule,
+    AppRoutingModule,
+    RouterModule.forRoot([]),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     MainModule,
