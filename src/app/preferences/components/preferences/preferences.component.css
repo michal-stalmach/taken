@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  padding: 4vw;
+}
+
+:host .preferences-item {
+  display: block;
+  margin: 2vh 0;
+}
