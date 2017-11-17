@@ -12,7 +12,7 @@ import { GiveComponent } from './give/give.component';
 import { MatIconModule } from '@angular/material/icon';
 
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatSlideToggleModule} from "@angular/material";
+import { MatSlideToggleModule} from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -24,7 +24,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatCardModule,
     MatDialogModule,
     MatButtonToggleModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
     MatButtonToggleModule,
     MatIconModule,
     MatInputModule,

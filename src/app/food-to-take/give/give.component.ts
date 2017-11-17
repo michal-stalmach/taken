@@ -16,22 +16,24 @@ export class GiveComponent {
 
   constructor(public dialogRef: MatDialogRef<GiveComponent>) {
     this.heroForm = new FormGroup({
-      lunchingNumber: new FormControl('', [Validators.required])
+      lunchingNumber: new FormControl('', [Validators.required]),
+      comments: new FormControl('')
     });
 
     this.heroForm.statusChanges.subscribe(a => console.log(a));
   }
 
   closeDialog() {
-    let details = '';
+    let lunchingNumber = '';
     if (this.type === FoodType.FITLAB || this.heroForm.valid) {
       if (this.type === FoodType.LUNCHING) {
-        details = `CW-${this.heroForm.value.lunchingNumber}`;
+        lunchingNumber = `CW-${this.heroForm.value.lunchingNumber}`;
       }
 
       this.dialogRef.close({
         type: this.type,
-        details
+        lunchingNumber: lunchingNumber,
+        details: this.heroForm.value.comments
       });
     }
   }

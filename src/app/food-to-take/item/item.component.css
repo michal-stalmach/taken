@@ -49,3 +49,12 @@
 :host .mat-card-header-text > * {
     margin: 0;
 }
+
+:host .comments {
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+:host mat-card-header:first-child {
+    position: absolute;
+}

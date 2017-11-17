@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthorizationModule } from './authorization/authorization.module';
 import { RouterModule } from '@angular/router';
 import { FoodToTakeModule } from './food-to-take/food-to-take.module';
-import { PreferencesModule } from "./preferences/preferences.module";
+import { PreferencesModule } from './preferences/preferences.module';
 
 import * as firebase from 'firebase/app';
 

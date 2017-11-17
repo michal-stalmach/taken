@@ -7,3 +7,8 @@
 :host mat-dialog-content {
   flex: 1;
 }
+
+
+:host mat-form-field {
+    width: 100%;
+}

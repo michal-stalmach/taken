@@ -8,14 +8,19 @@
       Lunching
     </mat-button-toggle>
   </mat-button-toggle-group>
-  <form [formGroup]="heroForm" (ngSubmit)="onSubmit()" novalidate *ngIf="type === 'LUNCHING'">
-    <mat-form-field class="example-full-width">
+  <form [formGroup]="heroForm" (ngSubmit)="onSubmit()" novalidate >
+    <mat-form-field class="example-full-width" *ngIf="type === 'LUNCHING'">
       <span matPrefix>CW- &nbsp;</span>
       <input type="text" matInput placeholder="Your Lunching number" formControlName="lunchingNumber" required>
       <mat-error *ngIf="heroForm.status === 'INVALID'">
         Lunching number is required
       </mat-error>
     </mat-form-field>
+
+    <mat-form-field>
+        <textarea matInput placeholder="Comments" matTextareaAutosize matAutosizeMinRows="2"
+                  matAutosizeMaxRows="5" formControlName="comments"></textarea>
+      </mat-form-field>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">

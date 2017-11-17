@@ -6,18 +6,21 @@
   </mat-card-header>
   <mat-card-content>
     <div class="card-container">
-      <p>
-        {{ food.details }} some details
-      </p>
+      <div class="comments">
+        <p *ngIf="food.type === 'LUNCHING'">
+          Lunching number:
+          <b>{{ food.lunchingNumber }}</b>
+        </p>
+        <p>
+          {{ food.details }}
+        </p>
+      </div>
       <ng-container [ngSwitch]="food.type">
         <div class="food-img">
-          <img mat-card-image *ngSwitchCase="'FITLAB'" src="http://fitlabcatering.pl/img/logo.png" alt="FitLab">
           <img mat-card-image *ngSwitchCase="'LUNCHING'" src="https://lunching.pl/_/img/homepage/wyroznia_lunching.png" alt="Lunching">
+          <img mat-card-image *ngSwitchDefault src="http://fitlabcatering.pl/img/logo.png" alt="FitLab">
         </div>
       </ng-container>
-
-
-
     </div>
     <mat-card-header class="card-taken-info" *ngIf="food.isTaken">
       <span class="card-taken-text">taken by</span>
