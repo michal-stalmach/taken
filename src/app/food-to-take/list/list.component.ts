@@ -3,18 +3,23 @@ import { AngularFirestoreDocument, AngularFirestoreCollection, AngularFirestore 
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../../authorization/auth.service';
 import * as firebase from 'firebase/app';
-import { GiveComponent } from "../give/give.component";
-import { MatDialog } from "@angular/material/dialog";
+import { GiveComponent } from '../give/give.component';
+import { MatDialog } from '@angular/material/dialog';
+import 'rxjs/add/operator/combineLatest';
 
-export interface Item {
-  owner: string;
+export interface FoodToTake {
+  owner: {
+    uid: string,
+    name: string,
+    photoURL: string
+  };
   createdAt: Date;
   type: FoodType;
   isTaken: boolean;
   takenBy?: string;
 }
 
-enum FoodType {
+export enum FoodType {
   FITLAB = 'FITLAB'
 }
 
@@ -25,32 +30,39 @@ enum FoodType {
 })
 export class ListComponent {
 
-  public items: Observable<Item[]>;
-  private itemsCollection: AngularFirestoreCollection<Item>;
+  public items: Observable<FoodToTake[]>;
+  private itemsCollection: AngularFirestoreCollection<FoodToTake>;
 
   constructor(
     private afs: AngularFirestore,
     private auth: AuthService,
     private dialog: MatDialog
   ) {
-    this.itemsCollection = afs.collection<Item>('toTake');
-    this.items = this.itemsCollection.valueChanges();
+    this.itemsCollection = afs.collection<FoodToTake>('toTake');
+    this.items = this.itemsCollection
+      .valueChanges()
+      .do(a => console.log(a));
+    // .map(items => items.sort());
   }
 
   addItem() {
-    let dialogRef = this.dialog.open(GiveComponent, {
+    this.dialog.open(GiveComponent, {
       height: '400px',
       width: '600px',
-    });
-
-    // this.auth.user$
-    //   .map<firebase.User, Item>(user => ({
-    //     owner: user.uid,
-    //     createdAt: new Date(),
-    //     type: FoodType.FITLAB,
-    //     isTaken: false
-    //   }))
-    //   .subscribe(item => this.itemsCollection.add(item));
+    })
+      .afterClosed()
+      .combineLatest(this.auth.user$)
+      .map(([food, user]: [any, firebase.User]) => ({
+        ...food,
+        owner: {
+          uid: user.uid,
+          name: user.displayName,
+          photoURL: user.photoURL
+        },
+        createdAt: new Date(),
+        isTaken: false
+      }))
+      .subscribe(item => this.itemsCollection.add(item));
   }
 
 }

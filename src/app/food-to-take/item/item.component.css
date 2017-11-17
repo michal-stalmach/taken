@@ -2,3 +2,7 @@
     display: block;
     margin-bottom: 20px;
 }
+
+:host img {
+    width: 100px;
+}

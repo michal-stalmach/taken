@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ItemComponent } from './item/item.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { GiveComponent } from './give/give.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { GiveComponent } from './give/give.component';
     FoodToTakeRoutingModule,
     MatButtonModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonToggleModule
   ],
   entryComponents: [
     GiveComponent

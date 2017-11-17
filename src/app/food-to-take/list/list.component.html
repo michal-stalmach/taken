@@ -1,6 +1,4 @@
-<app-food-to-take-item *ngFor="let item of items | async">
-  {{ item | json }}
-</app-food-to-take-item>
+<app-food-to-take-item *ngFor="let item of items | async" [food]="item"></app-food-to-take-item>
 
 <div class="button-row" align="end">
   <button (click)="addItem()" mat-fab>Give</button>
