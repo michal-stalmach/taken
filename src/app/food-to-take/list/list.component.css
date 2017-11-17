@@ -1,6 +1,8 @@
 :host {
     display: block;
     padding: 20px;
+    height: 85vh;
+    overflow-y: scroll;
 }
 
 :host .button-row {
