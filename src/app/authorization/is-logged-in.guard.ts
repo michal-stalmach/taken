@@ -3,6 +3,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from './auth.service';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/do';
 
 @Injectable()
 export class IsLoggedInGuard implements CanActivate {
@@ -15,8 +16,11 @@ export class IsLoggedInGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    this.auth.isLoggedIn.take(1).subscribe(() => this.router.navigate(['login']));
-
-    return this.auth.isLoggedIn;
+    return this.auth.isLoggedIn
+      .do(isLoggedIn => {
+        if (!isLoggedIn) {
+          this.router.navigate(['login']);
+        }
+      });
   }
 }

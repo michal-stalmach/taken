@@ -8,7 +8,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
 
 import { environment } from '../environments/environment';
-import {MainModule} from "./main/main.module";
+import { MainModule } from './main/main.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthorizationModule } from './authorization/authorization.module';
 import { RouterModule } from '@angular/router';
@@ -20,11 +20,13 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     AuthorizationModule,
+    MainModule,
     AppRoutingModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([], {
+      enableTracing: true
+    }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    MainModule,
     environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : []
   ],
   providers: [],
